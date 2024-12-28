@@ -1,4 +1,4 @@
-import { CommonUtilities } from "../utils/commonUtilities";
+import { CommonUtilities } from "../Utils/CommonUtilities";
 
 export class LoginPage extends CommonUtilities {
 
