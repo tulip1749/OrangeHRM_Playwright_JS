@@ -1,6 +1,5 @@
 const {test,expect} = require ("@playwright/test");
-const {LoginPage} = require('../../pageObjects/loginPage.js');
-const { CommonUtilities } = require("../../utils/commonUtilities.js");
+const {LoginPage} = require('../../PageObjects/LoginPage.js');
 
 test('Login with valid creds', async ({page})=> {
 
