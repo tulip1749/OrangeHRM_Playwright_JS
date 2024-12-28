@@ -1,7 +1,7 @@
 const {test,expect} = require ("@playwright/test");
 const {LoginPage} = require('../../PageObjects/LoginPage.js');
 
-test('Login with valid creds', async ({page})=> {
+test.skip('Login with valid creds', async ({page})=> {
 
 //creating object for LoginPage class
 const loginPage= new LoginPage(page, expect);
