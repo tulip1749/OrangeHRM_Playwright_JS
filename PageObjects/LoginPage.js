@@ -1,4 +1,4 @@
-import { CommonUtilities } from "../utils/commonUtilities";
+import { CommonUtilities } from "../Utils/CommonUtilities";
 
 export class LoginPage extends CommonUtilities {
 
@@ -46,11 +46,13 @@ export class LoginPage extends CommonUtilities {
         await this.loginButton.click();
         
         //Handle dialogs 
-        this.handleDialogs();
+
+        await this.handleDialogs();
         
         // Verifying successful login
-        await this.expect(this.page).toHaveURL(/.*dashboard*/);
-        this.expect(await this.page.title()).toBe("OrangeHRM");
+        await this.expect(await this.page).toHaveURL(/.*dashboard*/);
+        await this.expect(await this.page.title()).toBe("OrangeHRM");
+
     }
 
     async inValidLogin(uName,pwd)
