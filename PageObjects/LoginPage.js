@@ -46,11 +46,13 @@ export class LoginPage extends CommonUtilities {
         await this.loginButton.click();
         
         //Handle dialogs 
+
         await this.handleDialogs();
         
         // Verifying successful login
         await this.expect(await this.page).toHaveURL(/.*dashboard*/);
         await this.expect(await this.page.title()).toBe("OrangeHRM");
+
     }
 
     async inValidLogin(uName,pwd)
