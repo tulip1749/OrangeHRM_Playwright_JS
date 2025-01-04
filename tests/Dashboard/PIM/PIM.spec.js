@@ -2,14 +2,14 @@ const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../../../PageObjects/LoginPage.js');
 const { DashboardPage } = require('../../../PageObjects/DashboardPage.js');
 const { PIMPage } = require('../../../PageObjects/PIMPage.js');
-
+const {CommonUtilities} = require('../../../Utils/CommonUtilities');
 const configData  = require('../../../Data/ConfigData.js'); 
 
 test('Navigating to Dashboard options', async ({ page }) => {
 
     const loginPage = new LoginPage(page, expect);
-const dashboardPage = new DashboardPage(page, expect);
-const pimPage = new PIMPage(page, expect);
+    const dashboardPage = new DashboardPage(page, expect);
+    const pimPage = new PIMPage(page, expect);
 
     /* let employeeDetails =
     {
@@ -19,20 +19,22 @@ const pimPage = new PIMPage(page, expect);
         createDetailsNeeded: true
     } */
 
-    let employeeLoginDetails =
+    /* let employeeLoginDetails =
     {
         userName: "aron01",
         password: "aron123",
         confirmPassword: "aron123"
-    }
+    } */
 
     await loginPage.websiteLaunch(configData.urls.baseUrl);
     await loginPage.validLogin(configData.webUrlLogin.validUser);
     await dashboardPage.selectingDashboarOptions("PIM");
     const employeeDetails = await PIMPage.readCSV('./Data/EmployeeData.csv');
+    const createEmpDetails = await CommonUtilities.getCreateEmpDetailsData('CreateEmpLogin.json');
+
     for (const emp of employeeDetails)
     {
-        await pimPage.addEmployeeDetails(emp,employeeLoginDetails);
+        await pimPage.addEmployeeDetails(emp,createEmpDetails);
     }
     
     

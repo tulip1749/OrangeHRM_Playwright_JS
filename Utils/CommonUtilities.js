@@ -1,6 +1,7 @@
 const fs = require('fs');
+const path = require ('path');
 const csvParser = require('csv-parser');
-export class CommonUtilities {
+class CommonUtilities {
     constructor(page) {
         this.page = page;
     }
@@ -18,4 +19,15 @@ export class CommonUtilities {
                 .on('error', (error) => reject(error));
         });
     }
+
+    static getCreateEmpDetailsData(fileName) {
+        const filePath = path.join(__dirname, '..', 'Data', fileName);
+        const rawData = fs.readFileSync(filePath);
+        return JSON.parse(rawData);
+    }
+
+    
+
 }
+
+module.exports = {CommonUtilities};

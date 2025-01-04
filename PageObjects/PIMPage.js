@@ -20,8 +20,6 @@ export class PIMPage extends CommonUtilities {
         this.createLoginStatusRadioEnabled = page.locator("//label[text()='Enabled']");
         this.createLoginStatusRadioDisabled = page.locator("//label[text()='Disabled']");
         this.createLoginConfirmPasswordField = page.locator("//label[text()='Confirm Password']/ancestor::div[contains(@class,'oxd-input-group oxd-input-field-bottom-space')]//input[@class='oxd-input oxd-input--active']");
-        //this.addEmployeeSuccessToast = page.locator('.oxd-toast oxd-toast--success oxd-toast-container--toast').filter({hasText:'Successfully Updated'});
-        //this.addEmployeeSuccessToast = page.locator('.oxd-toast-container oxd-toast-container--bottom');
 
         //Employeelist locators
         this.employeeInfoTable = page.locator('.oxd-table-filter .oxd-table-filter-header');
@@ -55,39 +53,4 @@ export class PIMPage extends CommonUtilities {
     }
 
 
-    /*    async addEmployeeName (employeeName)
-        {
-    
-        }
-    
-        async addEmployeeId (employeeId)
-        {
-    
-        }
-    
-        async addEmployeeStatus (EmployeeStatus)
-        {
-    
-        }
-    
-        async addInclude (include)
-        {
-    
-        }
-    
-        async addSupervisorName (SupervisorName)
-        {
-    
-        }
-    
-        async addJobTitle (JobTitle)
-        {
-    
-        }
-    
-        async addSubUnit (SubUnit)
-        {
-    
-        }
-    */
 }
