@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "description": "��#\u0000 \u0000O\u0000r\u0000a\u0000n\u0000g\u0000e\u0000H\u0000R\u0000M\u0000_\u0000P\u0000l\u0000a\u0000y\u0000w\u0000r\u0000i\u0000g\u0000h\u0000t\u0000_\u0000J\u0000S\u0000\r\u0000 \u0000",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cucumber-js --require ./stepDefinitions/**/*.js --require ./support/world.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cucumber/cucumber": "^11.1.1",
     "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.10.2",
+    "playwright-bdd": "^8.0.1",
+    "reflect-metadata": "^0.2.2"
+  },
+  "dependencies": {
+    "csv-parser": "^3.1.0",
+    "xlsx": "^0.18.5"
   }
 }

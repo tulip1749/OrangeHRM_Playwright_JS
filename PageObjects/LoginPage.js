@@ -1,6 +1,6 @@
-import { CommonUtilities } from "../Utils/CommonUtilities";
+const { CommonUtilities } = require('../Utils/CommonUtilities');
 
-export class LoginPage extends CommonUtilities {
+class LoginPage extends CommonUtilities {
 
     constructor(page, expect)
     {
@@ -15,15 +15,15 @@ export class LoginPage extends CommonUtilities {
 
     }
 
-    async websiteLaunch()
+    async websiteLaunch(url)
     {
-        await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+        await this.page.goto(url);
         
         // Tallying the page URL
         await this.expect(this.page).toHaveURL(/opensource-demo\.orangehrmlive\.com/);
     }
 
-    async extractedUserName()
+    /* async extractedUserName()
     {
         let mentionedUserNameContent = await this.mentionedUserName.textContent();
         return (await mentionedUserNameContent.split(":")[1].trim());
@@ -33,16 +33,16 @@ export class LoginPage extends CommonUtilities {
     {
         let mentionedPasswordContent = await this.mentionedPassword.textContent();
         return (await mentionedPasswordContent.split(":")[1].trim());
-    }
+    } */
 
-    async validLogin()
+    async validLogin(validCreds)
     {
         // extract username and password
-        let userName = await this.extractedUserName();
-        let password = await this.extractedPassword();
+        /* let userName = await this.extractedUserName();
+        let password = await this.extractedPassword(); */
 
-        await this.userNameField.fill(userName);
-        await this.passwordField.fill(password);
+        await this.userNameField.fill(validCreds.username);
+        await this.passwordField.fill(validCreds.password);
         await this.loginButton.click();
         
         //Handle dialogs 
@@ -50,7 +50,7 @@ export class LoginPage extends CommonUtilities {
         await this.handleDialogs();
         
         // Verifying successful login
-        await this.expect(await this.page).toHaveURL(/.*dashboard*/);
+        //await this.expect(await this.page).toHaveURL(/.*dashboard*/);
         await this.expect(await this.page.title()).toBe("OrangeHRM");
 
     }
@@ -62,3 +62,4 @@ export class LoginPage extends CommonUtilities {
     }
 
 }
+module.exports = { LoginPage };

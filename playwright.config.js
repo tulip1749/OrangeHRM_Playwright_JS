@@ -1,5 +1,6 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const { defineBddConfig } = require('playwright-bdd');
 
 /**
  * Read environment variables from file.
@@ -7,15 +8,20 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 // require('dotenv').config();
 
+const testDir = defineBddConfig({
+  features: ['Features/**/*.feature'],
+  require: ['StepDefinitions/**/*.js'],
+});
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
+  testDir,
   /* Run tests in files in parallel */
-  timeout:60*1000,
+  timeout: 60 * 1000,
   // @ts-ignore
-  except:{
+  except: {
     timeout: 6000
   },
   fullyParallel: true,
@@ -30,11 +36,21 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     browserName: 'firefox',
-    trace: 'on-first-retry',
+    trace: 'on',
     headless: false,
+    screenshot: 'on',
   },
 
-  
+  // projects: [
+  //   {
+  //     name: 'bdd',
+  //     testDir: './features',
+  //   },
+  // ],
+
+
+
+
 
 
   /* Run your local dev server before starting the tests */
